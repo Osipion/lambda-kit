@@ -1,0 +1,25 @@
+{
+  "name": "lambda-kit",
+  "version": "1.0.3",
+  "description": "",
+  "main": "./lib/lib.min.js",
+  "scripts": {
+    "generate-dts": "dts-generator --name lambda-kit --project . --out ./lib/lib.d.ts && cat ./lib/lib.d.ts | sed -e 's:/src/:/:g' > ./lib/lib.d.ts",
+    "build": "webpack --config webpack.lib.config.js && npm run dts-gen",
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha && remap-istanbul -i coverage/coverage.json -o coverage/html -t html"
+  },
+  "author": "osipion",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "dts-generator": "^2.1.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "remap-istanbul": "^0.9.5",
+    "ts-loader": "^2.0.3",
+    "uglify-js": "github:mishoo/UglifyJS2#harmony",
+    "uglifyjs-webpack-plugin": "^0.4.3",
+    "webpack": "2.x",
+    "webpack-node-externals": "^1.5.4"
+  }
+}
